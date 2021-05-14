@@ -22,22 +22,22 @@ This is a cat/dog image classifier.
 
 3) To classify all images in a directory, run:
 
-    `python3 predict.py model/model.hd5 <DIRECTORY> [--cct <CONFIDENCE THRESHOLD>]
+    `python3 predict.py model/model.hd5 <DIRECTORY> [--cct <CONFIDENCE THRESHOLD>]`
 
 4) To test images in a directory containing "cats", "dogs" and optionanly other subdirectories with already classified images:
 
-    `python3 test.py model/model.hd5 <DIRECTORY> [--cct <CONFIDENCE THRESHOLD>] [--n_images <NUMBER OF IMAGES TO TEST IN EACH DIRECTORY>]
+    `python3 test.py model/model.hd5 <DIRECTORY> [--cct <CONFIDENCE THRESHOLD>] [--n_images <NUMBER OF IMAGES TO TEST IN EACH DIRECTORY>]`
    
 5) To retrain the model:
 
-    `python3 train.py model/model.hd5 <TRAIN IMAGES DIRECTORY> <VALIDATION IMAGES DIRECTORY> <NUMBER OF EPOCHS>
+    `python3 train.py model/model.hd5 <TRAIN IMAGES DIRECTORY> <VALIDATION IMAGES DIRECTORY> <NUMBER OF EPOCHS>`
 
 6) To run the Flask app with REST API:
 
-    `python3 rest_api.py
+    `python3 rest_api.py`
     
     and send a request like:
     
-    `curl -X POST --data-binary @"<IMAGE FILE PATH>" localhost:5000/catdog
+    `curl -X POST --data-binary @"<IMAGE FILE PATH>" localhost:5000/catdog`
 
  
