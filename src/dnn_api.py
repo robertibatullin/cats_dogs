@@ -100,8 +100,7 @@ class ModelWrapper():
     
     def train(self, train_dir: str, 
               val_dir: str, 
-              n_epochs: int,
-              steps_per_epoch: int = 200):
+              n_epochs: int):
         '''
         Training model.
 
@@ -120,7 +119,6 @@ class ModelWrapper():
                        |      |---image3
                        |      |---image4
         n_epochs : number of epochs.
-        steps_per_epoch : steps_per_epoch (by default 200).
 
         Returns
         -------
@@ -134,7 +132,6 @@ class ModelWrapper():
               metrics = ["accuracy"])
         self._model.fit(
             train_set,
-            steps_per_epoch = steps_per_epoch,
             epochs = n_epochs,
             validation_data = val_set)
     
