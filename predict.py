@@ -4,7 +4,7 @@
 import argparse
 from src.classifier import CatDogClassifier
 
-def prettyprint(dct):
+def prettyprint(dct: dict):
     '''
     Utility for printing CatDogClassifier output
 
@@ -38,4 +38,3 @@ clf = CatDogClassifier(model_path = args.model_path,
               )
 prediction = clf.predict_dir(args.image_path)
 prettyprint(prediction)
-    

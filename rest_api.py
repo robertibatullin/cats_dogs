@@ -16,10 +16,19 @@ app = Flask(__name__)
 clf = CatDogClassifier('model/model.hd5', 0.9999)
 
 @app.route('/catdog', methods=['POST'])
-def index():
+def predict_cat_dog() -> str:
+    '''
+    View function receiving POST request with image file.
+
+    Returns
+    -------
+    str : json string '{"class": <IMAGE CLASS>}'
+
+    '''
     buff = request.get_data()
     pred = clf.predict_file(buff)
-    return pred
+    return '{"class":"'+pred+'"}'
 
 if __name__ == '__main__':
     app.run()
+    

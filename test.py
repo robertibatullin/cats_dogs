@@ -1,11 +1,28 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import cv2, os
+'''
+Evaluating CatDogClassifier.
+Prepare a test image set with structure:
+    root
+       |---cats
+       |      |---image1
+       |      |---image2
+       |---dogs
+       |      |---image3
+       |      |---image4
+       |---other (optional)
+       |      |---image5
+       |      |---image6
+This testing script predicts cat/dog class for any image in this set
+in original orientation and rotated by 90, 180 and 270 degrees.
+Accuracy score is calculated separately for cat and dog classes. 
+'''
+import os,argparse
+import cv2
 from imutils import rotate
 from src.classifier import CatDogClassifier
-import argparse
 
-parser = argparse.ArgumentParser(description='Testing cat\dog classifier.')
+parser = argparse.ArgumentParser(description='Evaluating CatDogClassifier.')
 parser.add_argument('model_path', type=str, 
                     help='path to load DNN model')
 parser.add_argument('image_path', type=str,  
@@ -44,20 +61,19 @@ for transform in transform_funcs:
         filenames = os.listdir(os.path.join(test_dir,subdir))
         if args.n_images:
             filenames = filenames[:args.n_images]
+        imgs = []
         for filename in filenames:
             path = os.path.join(test_dir, subdir, filename)
             img = cv2.imread(path,
                              cv2.IMREAD_COLOR)
             img = transform_func(img)
-            predicted_class = clf.predict_image(img)
-            if real_class == predicted_class:
-                accurate_predictions_count += 1
+            imgs.append(img)
+        predicted_classes = clf.predict_images(imgs)
+        accurate_predictions_count = sum(
+            [predicted_class == real_class \
+             for predicted_class in predicted_classes])
         accuracy_percent = int(100*accurate_predictions_count/len(filenames))
         print(real_class, ':',
               accurate_predictions_count, 'accurate predictions of',
               len(filenames),
               f'(accuracy = {accuracy_percent}%)')
-                
-                
-    
-    

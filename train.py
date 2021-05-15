@@ -20,6 +20,7 @@ if args.load:
     model = ModelWrapper.load(args.model_path)
 else:
     model = ModelWrapper.new()
-model.prepare_train_val(args.train_dir, args.val_dir) 
-model.train(n_epochs = args.n_epochs)
+model.train(args.train_dir,
+            args.val_dir,
+            n_epochs = args.n_epochs)
 model.save(args.model_path)

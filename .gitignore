@@ -1,6 +1,7 @@
 model/
 sample/
 cats_dogs.zip
+train.ipynb
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
