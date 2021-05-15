@@ -12,13 +12,13 @@ This is a cat/dog image classifier.
 
     Unzip them into cats_dogs folder:
     
-    `
+    ```
     cats_dogs
             |---model
             |       |--model.hd5
             |---sample
             |---src
-    `
+    ```
 
 3) To classify all images in a directory, run:
 
