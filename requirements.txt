@@ -1,5 +1,6 @@
-tensorflow=2.2.0
-opencv-python=4.5.1
-numpy=1.19.2
-imutils
-python-magic
+tensorflow==2.2.0
+opencv-python==4.5.1.48
+numpy==1.19.2
+imutils==0.5.4
+python-magic==0.4.22
+flask==1.1.2

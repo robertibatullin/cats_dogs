@@ -1,16 +1,18 @@
 #!/usr/bin/env python
 # coding: utf-8
+
+from typing import Iterable
+
 import numpy as np
 import cv2
 from tensorflow.keras import Input,Model
 from tensorflow.keras.models import load_model
 from tensorflow.keras.layers import Flatten, Dense
-from tensorflow.keras.applications.resnet50 import ResNet50
 from tensorflow.keras.preprocessing import image
-from tensorflow.keras.applications.resnet50 import preprocess_input
+from tensorflow.keras.applications.resnet50 import ResNet50,preprocess_input
+
 
 class ModelWrapper():
-
     '''
     Simplified wrapper for DNN classifiers. This implementation
     contains Tensorflow/Keras ResNet50 model. Other ModelWrappers can be 
@@ -38,7 +40,6 @@ class ModelWrapper():
         Example
         -------
         mw = ModelWrapper.load("model.hd5")
-
         '''
         model = load_model(path)
         return cls(model)
@@ -123,7 +124,6 @@ class ModelWrapper():
         Returns
         -------
         None.
-
         '''
         train_set = self._preprocess_dataset(train_dir)
         val_set = self._preprocess_dataset(val_dir)
@@ -146,25 +146,24 @@ class ModelWrapper():
         Returns
         -------
         None.
-
         '''
         self._model.save(path)
         
-    def predict(self, imgs):
+    def predict(self, images:Iterable[np.array]):
         '''
         Predicting class probabilities for several images.
 
         Parameters
         ----------
-        imgs : list or other iterable of OpenCV BGR image objects.
+        images : list or other iterable of OpenCV BGR image objects.
 
         Returns
         -------
-        pred_probs : Numpy array of shape (n_images, n_classes) of class probabilities.
-
+        pred_probs : Numpy array of shape (n_images, n_classes) 
+        of class probabilities.
         '''
         rgb_resized = [cv2.resize(cv2.cvtColor(img, cv2.COLOR_BGR2RGB), 
-                              self.IMAGE_SIZE) for img in imgs]
+                              self.IMAGE_SIZE) for img in images]
         arr = np.array(rgb_resized)
         pred_probs = self._model.predict(arr)
         return pred_probs
