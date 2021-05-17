@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import os
-from typing import Iterable,Union
+from typing import List,Union
 
 import cv2
 import numpy as np
@@ -48,7 +48,7 @@ class CatDogClassifier():
         return self.CLASS_NAMES[most_probable]
 
     def predict_images(self, 
-                       images: Iterable[np.array]) -> list:
+                       images: List[np.array]) -> list:
         '''
         Predict cat/dog classes for list of OpenCV image objects.
         

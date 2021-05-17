@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-from typing import Iterable
+from typing import List
 
 import numpy as np
 import cv2
@@ -149,13 +149,13 @@ class ModelWrapper():
         '''
         self._model.save(path)
         
-    def predict(self, images:Iterable[np.array]):
+    def predict(self, images:List[np.array]):
         '''
         Predicting class probabilities for several images.
 
         Parameters
         ----------
-        images : list or other iterable of OpenCV BGR image objects.
+        images : list of OpenCV BGR image objects.
 
         Returns
         -------
