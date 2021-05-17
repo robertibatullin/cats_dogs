@@ -17,28 +17,34 @@ This is a cat/dog image classifier.
             |---model
             |       |--model.hd5
             |---sample
-            |---src
+            |---cats_dogs
     ```
 
-3) To classify all images in a directory, run:
+3) Change directory to upper-level ```cats_dogs``` and install ```cats_dogs``` package:
+
+   ```
+   pip install . 
+   ```
+
+4) To classify all images in a directory, run:
 
     ```
     python3 predict.py model/model.hd5 <DIRECTORY> [-t <CONFIDENCE THRESHOLD>]
     ```
 
-4) To test images in a directory containing "cats", "dogs" and optionally other subdirectories with already classified images:
+5) To test images in a directory containing "cats", "dogs" and optionally other subdirectories with already classified images:
 
     ```
-    python3 test.py model/model.hd5 <DIRECTORY> [-t <CONFIDENCE THRESHOLD>] [--n_images <NUMBER OF IMAGES TO TEST IN EACH DIRECTORY>]
+    python3 tests/e2e_test.py model/model.hd5 <DIRECTORY> [-t <CONFIDENCE THRESHOLD>] [--n_images <NUMBER OF IMAGES TO TEST IN EACH DIRECTORY>]
     ```
    
-5) To retrain the model:
+6) To retrain the model:
 
     ```
     python3 train.py model/model.hd5 <TRAIN IMAGES DIRECTORY> <VALIDATION IMAGES DIRECTORY> <NUMBER OF EPOCHS>
     ```
 
-6) To run the Flask app with REST API:
+7) To run the Flask app with REST API:
 
     ```
     python3 rest_api.py
