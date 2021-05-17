@@ -3,7 +3,7 @@
 '''
 Run this flask app on localhost and post image as follows:
 
-     curl -X POST --data-binary @"<IMAGE FILE PATH>" localhost:5000/catdog
+     curl -X POST -F "file=@<IMAGE FILE PATH>" localhost:5000/catdog
 
 The response will be "cat", "dog", "unknown_class" or "unsupported_file".
 '''
@@ -24,7 +24,7 @@ def predict_cat_dog() -> dict:
     -------
     dict : {"class": <IMAGE CLASS>}
     '''
-    buff = request.get_data()
+    buff = request.files['file'].read()
     pred = clf.predict_file(buff)
     return {"class":pred}
 

@@ -47,7 +47,7 @@ This is a cat/dog image classifier.
     and send a request like:
     
     ```
-    curl -X POST --data-binary @"<IMAGE FILE PATH>" localhost:5000/catdog
+     curl -X POST -F "file=@<IMAGE FILE PATH>" localhost:5000/catdog
     ```
 
  
