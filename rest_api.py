@@ -10,7 +10,7 @@ The response will be "cat", "dog", "unknown_class" or "unsupported_file".
 
 from flask import Flask, request
 
-from src.classifier import CatDogClassifier
+from cats_dogs.classifier import CatDogClassifier
 
 
 app = Flask(__name__)

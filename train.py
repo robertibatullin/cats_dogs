@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import argparse
 
-from src.dnn_api import ModelWrapper
+from cats_dogs.dnn_api import ModelWrapper
 
 
 if __name__ == '__main__':

@@ -24,7 +24,7 @@ import argparse
 import cv2
 from imutils import rotate
 
-from src.classifier import CatDogClassifier
+from cats_dogs.classifier import CatDogClassifier
 
 
 if __name__ == '__main__':

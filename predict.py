@@ -3,8 +3,8 @@
 
 import argparse
 
-from src.classifier import CatDogClassifier
-from src.utils import prettyprint
+from cats_dogs.classifier import CatDogClassifier
+from cats_dogs.utils import prettyprint
 
 
 if __name__ == '__main__':
